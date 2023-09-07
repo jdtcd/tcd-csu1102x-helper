@@ -97,21 +97,21 @@ export async function applyConfig() {
 
 	console.log("Selected: " + config.name);
 
-	// Apply selected module configuration
-	const conf = vscode.workspace.getConfiguration();
-	const helperConf = conf.get('tcd-csu1102x-helper', {});
+	const conf = vscode.workspace.getConfiguration('tcd-csu1102x-helper');
 
-	try {
-		const newConf = Object.assign(config.helperSettings, helperConf);
-		conf.update('tcd-csu1102x-helper', newConf, vscode.ConfigurationTarget.Global).then(() => {
-			vscode.window.showInformationMessage('Settings updated!');
-		});
+	for (const[key, value] of Object.entries(config.helperSettings)) {
+		// Apply selected module configuration
+		try {
+			conf.update(key, value, vscode.ConfigurationTarget.Global).then(() => {
+				vscode.window.showInformationMessage('Setting updated!');
+			});
 		}
-	catch (err) {
-		console.log("Error merging settings.");
-		console.log(err);
-		vscode.window.showErrorMessage('An error occurred when updating settings.');
-		return;
+		catch (err) {
+			console.log("Error merging settings.");
+			console.log(err);
+			vscode.window.showErrorMessage('An error occurred when updating settings.');
+			return;
+		}
 	}
 }
 
