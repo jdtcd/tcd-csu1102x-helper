@@ -1,0 +1,12 @@
+{
+    "name": "Linux on your own computer (ADVANCED)",
+    "ordinal": 50,
+    "helperSettings": {
+        "armToolchainPath": "/usr/bin",
+        "gdbPath": "/usr/bin/gdb-multiarch",
+        "qemuPath": "/usr/bin/qemu-system-arm"
+    },
+    "globalSettings": {
+        
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "name": "Windows on your own computer (ADVANCED)",
+    "ordinal": 50,
+    "helperSettings": {
+        "armToolchainPath": "C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/12.2 mpacbti-rel1/bin",
+        "gdbPath": "C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/12.2 mpacbti-rel1/bin/arm-none-eabi-gdb.exe",
+        "qemuPath": "C:/Program Files/qemu/qemu-system-arm.exe"
+    },
+    "globalSettings": {
+        
+    }
+}

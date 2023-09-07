@@ -1,0 +1,12 @@
+{
+    "name": "MacOS with Homebrew on your own computer (ADVANCED)",
+    "ordinal": 50,
+    "helperSettings": {
+        "armToolchainPath": "/opt/homebrew/bin",
+        "gdbPath": "/opt/homebrew/bin/arm-none-eabi-gdb",
+        "qemuPath": "/opt/homebrew/bin/qemu-system-arm"
+    },
+    "globalSettings": {
+
+    }
+}

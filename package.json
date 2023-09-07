@@ -1,0 +1,69 @@
+{
+  "name": "tcd-csu1102x-helper",
+  "displayName": "TCD CSU1102x Helper",
+  "description": "Automatically configure your VSCode settings for the module CSU11021/CSU11022 at Trinity College Dublin",
+  "publisher": "jdtcd",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.81.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "tcd-csu1102x-helper.applyConfig",
+        "title": "TCD CSU1102x Helper: Apply Configuration"
+      }
+    ],
+    "configuration": {
+      "title": "TCD CSU1102x Helper",
+      "properties": {
+        "tcd-csu1102x-helper": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object"
+          },
+          "scope": "machine",
+          "default": {
+            "armToolchainPath": "C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/12.2 mpacbti-rel1/bin",
+            "gdbPath": "C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/12.2 mpacbti-rel1/bin/arm-none-eabi-gdb.exe",
+            "qemuPath": "C:/Program Files/qemu/qemu-system-arm.exe"
+          }
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.81.0",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "20.2.5",
+    "@typescript-eslint/eslint-plugin": "^5.59.8",
+    "@typescript-eslint/parser": "^5.59.8",
+    "eslint": "^8.41.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.1.3",
+    "@vscode/test-electron": "^2.3.2"
+  },
+  "extensionDependencies": [
+    "dan-c-underwood.arm",
+    "marus25.cortex-debug",
+    "marus25.cortex-debug-dp-stm32f1",
+    "ms-vscode-remote.vscode-remote-extensionpack",
+    "mcu-debug.debug-tracker-vscode",
+    "mcu-debug.memory-view"
+  ]
+}
