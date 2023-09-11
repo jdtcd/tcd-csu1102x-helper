@@ -89,27 +89,24 @@ async function quickPickConfig(): Promise<(IHelperConfig | undefined)> {
 export async function applyConfig() {
 
 	// Retrieve available configurations and ask user to select one
-	const config = await quickPickConfig();
+	const newConf = await quickPickConfig();
 
-	if (config === undefined) {
+	if (newConf === undefined) {
 		return;
 	}
 
-	console.log("Selected: " + config.name);
+	console.log("Selected: " + newConf.name);
 
 	const conf = vscode.workspace.getConfiguration('tcd-csu1102x-helper');
 
-	for (const[key, value] of Object.entries(config.helperSettings)) {
-		// Apply selected module configuration
+	for (const[key, value] of Object.entries(newConf.helperSettings)) {
 		try {
-			conf.update(key, value, vscode.ConfigurationTarget.Global).then(() => {
-				vscode.window.showInformationMessage('Setting updated!');
-			});
+			await conf.update(key, value, vscode.ConfigurationTarget.Global);
 		}
 		catch (err) {
 			console.log("Error merging settings.");
 			console.log(err);
-			vscode.window.showErrorMessage('An error occurred when updating settings.');
+			vscode.window.showErrorMessage('An error occurred when updating setting for ' + key + ".");
 			return;
 		}
 	}

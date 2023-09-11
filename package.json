@@ -19,23 +19,40 @@
         "title": "TCD CSU1102x Helper: Apply Configuration"
       }
     ],
-    "configuration": {
-      "title": "TCD CSU1102x Helper",
-      "properties": {
-        "tcd-csu1102x-helper": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "object"
+    "configuration":[
+      {
+        "title": "CSU11021/CSU11022",
+        "properties": {
+          "tcd-csu1102x-helper.armToolchainPath": {
+            "type": "string",
+            "scope": "machine",
+            "ignoreSync": true,
+            "title": "Arm GNU Toolchain Path",
+            "order": 1,
+            "description": "Path to the directory/folder containing Arm GNU Toolchain executables (usually sneing in /bin)",
+            "default": "C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/12.2 mpacbti-rel1/bin"
           },
-          "scope": "machine",
-          "default": {
-            "armToolchainPath": "C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/12.2 mpacbti-rel1/bin",
-            "gdbPath": "C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/12.2 mpacbti-rel1/bin/arm-none-eabi-gdb.exe",
-            "qemuPath": "C:/Program Files/qemu/qemu-system-arm.exe"
+          "tcd-csu1102x-helper.gdbPath": {
+            "type": "string",
+            "scope": "machine",
+            "ignoreSync": true,
+            "title": "GDB Path",
+            "order": 2,
+            "description": "Full path to the GDB executable (usually arm-none-eabi-gdb, arm-none-eabi-gdb.exe or gdm-multiarch)",
+            "default": "C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/12.2 mpacbti-rel1/bin/arm-none-eabi-gdb.exe"
+          },
+          "tcd-csu1102x-helper.qemuPath": {
+            "type": "string",
+            "scope": "machine",
+            "ignoreSync": true,
+            "title": "QEMU Path",
+            "order": 3,
+            "description": "Full path to the QEMU emulator executable (qemu-system-arm.exe or qemu-system-arm)",
+            "default": "C:/Program Files/qemu/qemu-system-arm.exe"
           }
         }
       }
-    }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
