@@ -1,71 +1,37 @@
-# tcd-csu1102x-helper README
+# TCD CSU1102x Helper for Visual Studio Code
 
-This is the README for your extension "tcd-csu1102x-helper". After writing up a brief description, we recommend including the following sections.
+This small Visual Studio Code extension is intended for students taking the CSU11021 and CSU11022 modules in the [School of Computer Science and Statistics](https://www.scss.tcd.ie) at [Trinity College Dublin](https://www.tcd.ie).
+
+The extension provides configuration settings for Visual Studio Code that are then used by other extensions (e.g. Cortex-Debug), tasks and launch configurations. The settings simplify cross-platform support for building and debugging ARM Assembly Language programs using the Arm GNU Toolchain and Cortex-Debug extension.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+The only functionality provided in the current version is a command to choose a settings profile to add to your Visual Studio Code user settings. Default profiles are provided to support MacOS, Windows or Linux and configure Visual Studio Code for sensible default installation paths for the required tools.
 
-For example if there is an image subfolder under your extension project workspace:
+In addition to the command to apply a settings profile, the extension also provides default configuration settings for students using Windows, including in SCSS Computer Labs.
 
-\!\[feature X\]\(images/feature-x.png\)
+Finally, the extension specifies other extensions as dependencies, making this "Helper" extension a quick way to install the other extensions that you need, including among others:
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+* [Arm Assembly](https://marketplace.visualstudio.com/items?itemName=dan-c-underwood.arm)
+* [Cortex-Debug](https://marketplace.visualstudio.com/items?itemName=marus25.cortex-debug)
+* [Remote Development Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
+* [Memory View](https://marketplace.visualstudio.com/items?itemName=mcu-debug.memory-view)
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+The extension applies the following settings and provides an "Apply Configuration" commend to change these settings for a number of pre-configures OSes and environments.
 
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+* `tcd-csu1102x-helper.armToolchainPath`: Path to the Arm GNU toolchain `bin` directory/folder.
+* `tcd-csu1102x-helper.gdbPath`: Path to the GDB executable (usually ending with `arm-none-eabi-gdb.exe` on Windows, `arm-none-eabi-gdb` on MacOS or `gdb-multiarch` on Linux).
+* `tcd-csu1102x-helper.qemuPath`: Path to the QEMU executable (usually ending with `qemu-system-arm.exe` on Windows or `qemu-system-arm` on MacOS or Linux).
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+No known issues
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+### 1.0.0 (12-SEPT-2023)
 
-### 1.0.0
+Initial release.
 
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**

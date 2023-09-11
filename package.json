@@ -2,8 +2,9 @@
   "name": "tcd-csu1102x-helper",
   "displayName": "TCD CSU1102x Helper",
   "description": "Automatically configure your VSCode settings for the module CSU11021/CSU11022 at Trinity College Dublin",
+  "repository": "https://gitlab.scss.tcd.ie/CSU11021_22/tcd-csu1102x-helper.git",
   "publisher": "jdtcd",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.81.0"
   },
