@@ -4,7 +4,7 @@
   "description": "Automatically configure your VSCode settings for the module CSU11021/CSU11022 at Trinity College Dublin",
   "repository": "https://github.com/jdtcd/tcd-csu1102x-helper",
   "publisher": "jdtcd",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "engines": {
     "vscode": "^1.81.0"
   },
@@ -48,8 +48,17 @@
             "ignoreSync": true,
             "title": "QEMU Path",
             "order": 3,
-            "description": "Full path to the QEMU emulator executable (qemu-system-arm.exe or qemu-system-arm)",
+            "description": "Full path to the QEMU emulator executable (usually ending in qemu-system-arm.exe or qemu-system-arm)",
             "default": "C:/Program Files/qemu/qemu-system-arm.exe"
+          },
+          "tcd-csu1102x-helper.openocdPath": {
+            "type": "string",
+            "scope": "machine",
+            "ignoreSync": true,
+            "title": "OpenOCD Path",
+            "order": 4,
+            "description": "Full path to the OpenOCD executable (usually ending in openocd.exe or openocd)",
+            "default": "C:/ProgramData/chocolatey/bin/openocd.exe"
           }
         }
       }

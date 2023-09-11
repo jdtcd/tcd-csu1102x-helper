@@ -2,8 +2,8 @@
 
 All notable changes to the "tcd-csu1102x-helper" extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## [1.0.1]
 
-## [Unreleased]
+### Additions - 2023-09-11
 
-- Initial release
+- Added `openocdPath` setting.

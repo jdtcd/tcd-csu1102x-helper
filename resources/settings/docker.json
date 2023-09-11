@@ -4,7 +4,8 @@
     "helperSettings": {
         "armToolchainPath": "/usr/bin",
         "gdbPath": "/usr/bin/gdb-multiarch",
-        "qemuPath": "/usr/bin/qemu-system-arm"
+        "qemuPath": "/usr/bin/qemu-system-arm",
+        "openocdPath": "/usr/bin/openocd"
     },
     "globalSettings": {
         

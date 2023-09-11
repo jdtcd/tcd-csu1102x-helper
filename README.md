@@ -24,6 +24,7 @@ The extension applies the following settings and provides an "Apply Configuratio
 * `tcd-csu1102x-helper.armToolchainPath`: Path to the Arm GNU toolchain `bin` directory/folder.
 * `tcd-csu1102x-helper.gdbPath`: Path to the GDB executable (usually ending with `arm-none-eabi-gdb.exe` on Windows, `arm-none-eabi-gdb` on MacOS or `gdb-multiarch` on Linux).
 * `tcd-csu1102x-helper.qemuPath`: Path to the QEMU executable (usually ending with `qemu-system-arm.exe` on Windows or `qemu-system-arm` on MacOS or Linux).
+* `tcd-csu1102x-helper.openocdPath`: Path to the OpenOCD executable (usually ending with `openocd.exe` on Windows or `openocd` on MacOS or Linux).
 
 ## Known Issues
 
