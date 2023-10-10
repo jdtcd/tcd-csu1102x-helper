@@ -7,3 +7,9 @@ All notable changes to the "tcd-csu1102x-helper" extension will be documented in
 ### Additions
 
 - Added `openocdPath` setting.
+
+## [1.0.2] - 2023-10-10
+
+### Additions
+
+- Added warning about UNC paths and option to attempt fix

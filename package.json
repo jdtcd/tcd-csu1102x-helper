@@ -4,14 +4,16 @@
   "description": "Automatically configure your VSCode settings for the module CSU11021/CSU11022 at Trinity College Dublin",
   "repository": "https://github.com/jdtcd/tcd-csu1102x-helper",
   "publisher": "jdtcd",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "engines": {
     "vscode": "^1.81.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+      "workspaceContains:**/README-CSU1102*.md"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [

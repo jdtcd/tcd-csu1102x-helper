@@ -8,18 +8,12 @@ import path = require('path');
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('TCD CSU1102x helper extension is now active!');
+	console.log('TCD CSU1102x helper extension is active');
 
-	const userDnsDomain = process.env['USERDNSDOMAIN'];
-	if (userDnsDomain !== undefined) {
-		console.log("USERDNSDOMAIN=%s", userDnsDomain);
-	}
-
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
+	// Check for bad Windows UNC paths (which are unsupported)
+	checkWinUncFolder();
+	
+	// Register commands
 	let disposable = vscode.commands.registerCommand('tcd-csu1102x-helper.applyConfig', applyConfig);
 
 	context.subscriptions.push(disposable);
@@ -111,6 +105,65 @@ export async function applyConfig() {
 		}
 	}
 }
+
+
+function checkWinUncFolder() {
+
+	if (process.platform !== 'win32') {
+		return;
+	}
+
+	if (vscode.workspace.workspaceFolders === undefined) {
+		return;
+	}
+	
+	if (vscode.workspace.workspaceFolders.length == 0)
+	{
+		return;
+	}
+
+	const folder = vscode.workspace.workspaceFolders[0];
+	console.log("Checking folder: " + folder.uri.fsPath);
+
+	const regex = new RegExp("^\\\\\\\\tholosug\\.(?:itserv\\.)?scss\\.tcd\\.ie\\\\ugrad\\\\[a-zA-Z0-9_]+\\\\", "i");
+	if (regex.test(folder.uri.fsPath)) {
+		console.log("UNC path detected.");
+		const fixPath = folder.uri.fsPath.replace(regex, 'U:\\');
+		let fixAvailable = false;
+		try {
+			fs.accessSync(fixPath);
+			fixAvailable = true;
+		}
+		catch (err) {
+			fixAvailable = false;
+		}
+		if (fixAvailable) {
+			console.log("Fix path available.");
+			vscode.window
+				.showErrorMessage(
+					"Network (UNC) paths are not supported for CSU11021/CSU11022. " +
+					"Close this window and re-open the project from a mapped network drive (e.g. your U: drive). " +
+					"Would you like to try to do this automatically?",
+					"Yes", "No")
+				.then(answer => {
+					if (answer === "Yes") {
+						const fixUri = vscode.Uri.file(fixPath);
+						vscode.commands.executeCommand('vscode.openFolder', fixUri);
+					}
+				});
+		}
+		else {
+			console.log("Fix path not available.");
+			vscode.window.showErrorMessage(
+				"Network (UNC) paths are not supported by CSU11021/CSU11022.\n" +
+				"Close this window and re-open the project from a mapped network drive (e.g. your U: drive).");
+		}
+	}
+	else {
+		console.log("Not a UNC path.");
+	}
+}
+
 
 // This method is called when your extension is deactivated
 export function deactivate() {}
