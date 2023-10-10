@@ -33,17 +33,3 @@ The extension applies the following settings and provides an "Apply Configuratio
 ## Known Issues
 
 No known issues
-
-## Release Notes
-
-### 1.0.0 (11-SEPT-2023)
-
-Initial release.
-
-### 1.0.1 (11-SEPT-2023)
-
-Added openocdPath setting.
-
-### 1.0.2 (10-OCT-2023)
-
-Added UNC path detection and fix.
