@@ -6,16 +6,20 @@ The extension provides configuration settings for Visual Studio Code that are th
 
 ## Features
 
-The only functionality provided in the current version is a command to choose a settings profile to add to your Visual Studio Code user settings. Default profiles are provided to support MacOS, Windows or Linux and configure Visual Studio Code for sensible default installation paths for the required tools.
+The extension provides miscellaneous features to support the CSU11021 and CSU11022 Introduction to Computing module taught in Year 1 of the Computer Science curriculum at Trinity College Dublin, the University of Dublin.
+
+The `Apply Configuration` command allows you to choose a settings profile to add to your Visual Studio Code user settings. Default profiles are provided to support MacOS, Windows or Linux and configure Visual Studio Code for sensible default installation paths for the required tools.
 
 In addition to the command to apply a settings profile, the extension also provides default configuration settings for students using Windows, including in SCSS Computer Labs.
 
-Finally, the extension specifies other extensions as dependencies, making this "Helper" extension a quick way to install the other extensions that you need, including among others:
+The extension specifies other extensions as dependencies, making this "Helper" extension a quick way to install the other extensions that you need, including among others:
 
 * [Arm Assembly](https://marketplace.visualstudio.com/items?itemName=dan-c-underwood.arm)
 * [Cortex-Debug](https://marketplace.visualstudio.com/items?itemName=marus25.cortex-debug)
 * [Remote Development Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
 * [Memory View](https://marketplace.visualstudio.com/items?itemName=mcu-debug.memory-view)
+
+Finally, since network UNC paths are not supported by the toolchain used in the module, the extension will attempt to detect when a folder or workspace is incorrectly opened using an UNC path and, if possible, will prompt the user to re-open the folder/workspace using a mapped drive.
 
 ## Extension Settings
 
@@ -32,7 +36,14 @@ No known issues
 
 ## Release Notes
 
-### 1.0.0 (12-SEPT-2023)
+### 1.0.0 (11-SEPT-2023)
 
 Initial release.
 
+### 1.0.1 (11-SEPT-2023)
+
+Added openocdPath setting.
+
+### 1.0.2 (10-OCT-2023)
+
+Added UNC path detection and fix.
