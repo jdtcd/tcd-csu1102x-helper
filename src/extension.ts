@@ -14,9 +14,15 @@ export function activate(context: vscode.ExtensionContext) {
 	checkWinUncFolder();
 	
 	// Register commands
-	let disposable = vscode.commands.registerCommand('tcd-csu1102x-helper.applyConfig', applyConfig);
+	let applyConfigDisposable = vscode.commands.registerCommand('tcd-csu1102x-helper.applyConfig', applyConfig);
+	context.subscriptions.push(applyConfigDisposable);
 
-	context.subscriptions.push(disposable);
+	// Register event handlers
+	let debugStartDisposable = vscode.debug.onDidStartDebugSession(debugSessionStarted);
+	context.subscriptions.push(debugStartDisposable);
+
+	let debugEventDisposable = vscode.debug.onDidReceiveDebugSessionCustomEvent(debugEvent);
+	context.subscriptions.push(debugEventDisposable);
 }
 
 
@@ -161,6 +167,29 @@ function checkWinUncFolder() {
 	}
 	else {
 		console.log("Not a UNC path.");
+	}
+}
+
+
+function debugSessionStarted(session: vscode.DebugSession)
+{
+	if (session.type === "cortex-debug") {
+		console.log("Cortex debug session started!!")
+	}
+}
+
+
+function debugEvent(event: vscode.DebugSessionCustomEvent)
+{
+	console.log("Debug session custom event", event);
+
+	if (event.event === "custom-stop" && event.body.reason === "breakpoint") {
+		event.session.customRequest("evaluate", {expression: "$xpsr", context: "variables"}).then(result => {
+			console.log("xpsr: ", result);
+		},
+		error => {
+			console.log("Error reading xPSR", event);
+		});
 	}
 }
 
