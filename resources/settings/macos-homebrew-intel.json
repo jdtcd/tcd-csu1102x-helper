@@ -1,5 +1,5 @@
 {
-    "name": "MacOS with Homebrew on Intel (ADVANCED)",
+    "name": "MacOS with Homebrew on your own (older) Intel Mac (ADVANCED)",
     "ordinal": 75,
     "helperSettings": {
         "armToolchainPath": "/usr/local/bin",
