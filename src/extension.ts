@@ -104,6 +104,20 @@ export async function applyConfig() {
 			return;
 		}
 	}
+
+	const globalConf = vscode.workspace.getConfiguration();
+
+	for (const[key, value] of Object.entries(newConf.globalSettings)) {
+		try {
+			await globalConf.update(key, value, vscode.ConfigurationTarget.Global);
+		}
+		catch (err) {
+			console.log("Error merging settings.");
+			console.log(err);
+			vscode.window.showErrorMessage('An error occurred when updating setting for ' + key + ".");
+			return;
+		}
+	}
 }
 
 
